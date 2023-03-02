@@ -4,21 +4,48 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
+import { MyContext } from "../../App";
 
 interface Props {}
 
 const Info: React.FC<Props> = () => {
-    const [sizeaccept, setSizeaccept] = React.useState("0");
-    console.log(sizeaccept);
+    const [sizeaccept, setSizeaccept] = React.useState<string>("0");
+    // const [selectedSize, setSelectedSize] = useState(selectedGradient);
+    const { selectedSize, setSelectedSize, userName, setUserName } =
+        React.useContext(MyContext);
+
     const handleAcceptChange = (event: SelectChangeEvent) => {
-        setSizeaccept(event.target.value as string);
+        setSizeaccept(String(event.target.value));
     };
+    const handleinputChange = (e) => {
+        setUserName(e.target.value);
+    };
+
+    React.useEffect(() => {
+        if (sizeaccept === "0") {
+            setSelectedSize("AL");
+        } else if (sizeaccept === "1") {
+            setSelectedSize("AM");
+        } else if (sizeaccept === "2") {
+            setSelectedSize("AS");
+        } else if (sizeaccept === "3") {
+            setSelectedSize("KL");
+        } else if (sizeaccept === "4") {
+            setSelectedSize("KM");
+        } else if (sizeaccept === "5") {
+            setSelectedSize("KS");
+        }
+    }, [sizeaccept]);
     return (
         <>
             <Layout>
                 <RowBox>
                     <h1>ENTER YOUR FIRST NAME</h1>
-                    <input type="text" placeholder="FIRST NAME" />
+                    <input
+                        type="text"
+                        placeholder="FIRST NAME"
+                        onChange={(e) => handleinputChange(e)}
+                    />
                 </RowBox>
 
                 <RowBox>
@@ -35,8 +62,8 @@ const Info: React.FC<Props> = () => {
                             <MenuItem value={1}>AM</MenuItem>
                             <MenuItem value={2}>AS</MenuItem>
                             <MenuItem value={3}>KL</MenuItem>
-                            <MenuItem value={3}>KM</MenuItem>
-                            <MenuItem value={3}>KS</MenuItem>
+                            <MenuItem value={4}>KM</MenuItem>
+                            <MenuItem value={5}>KS</MenuItem>
                         </Select>
                     </FormControl>
                 </RowBox>

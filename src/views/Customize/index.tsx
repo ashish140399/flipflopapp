@@ -4,7 +4,7 @@ import { fabric } from "fabric";
 import { MyContext } from "../../App";
 import { Link, useNavigate } from "react-router-dom";
 import LoaderAnimation from "../components/LoaderAnimation";
-// import { Grid } from "@mui/material";
+import axios from "axios";
 interface Props {}
 
 const Customize: React.FC<Props> = () => {
@@ -16,12 +16,8 @@ const Customize: React.FC<Props> = () => {
     const [designfinalised, setDesignfinalised] = useState(false);
     const [objectadding, setObjectadding] = useState(true);
 
-    const {
-        selectedSize,
-        setSelectedSize,
-        selectedGradient,
-        setSelectedGradient,
-    } = useContext(MyContext);
+    const { selectedSize, userName, selectedGradient, setSelectedGradient } =
+        useContext(MyContext);
     // const [selcdesign, setSelcdesign] = useState(selectedSize);
 
     const [screennum, setScreennum] = useState(1);
@@ -61,7 +57,7 @@ const Customize: React.FC<Props> = () => {
             quality: 15,
             multiplier: 6,
         });
-
+        // console.log(dataURL);
         var link = document.createElement("a");
         link.download = `canvas.png`;
         link.href = dataURL;
@@ -70,6 +66,19 @@ const Customize: React.FC<Props> = () => {
             setShowloader(false);
             navigate("/thankyou");
         }
+
+        axios
+            .post(`${process.env.REACT_APP_API_URL}/api/save`, {
+                name: userName,
+                size: selectedSize,
+                canvasuri: dataURL,
+            })
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     };
 
     const canvasRef = useRef(null);
@@ -162,7 +171,7 @@ const Customize: React.FC<Props> = () => {
     useEffect(() => {
         if (canvas) {
             const objectarray = canvas.getObjects();
-            console.log(objectarray);
+
             if (designfinalised) {
                 canvas.forEachObject(function (object) {
                     object.selectable = false;
@@ -188,7 +197,7 @@ const Customize: React.FC<Props> = () => {
     useEffect(() => {
         if (canvas) {
             const objectarray = canvas.getObjects();
-            console.log(objectarray);
+
             if (objectarray.length > 0) {
                 if (screennum == 1) {
                     for (let i = 2; i < objectarray.length; i++) {

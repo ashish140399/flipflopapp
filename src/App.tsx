@@ -1,5 +1,6 @@
 import React, { createContext } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import Admin from "./views/Admin";
 import Choose from "./views/Choose";
 import Customize from "./views/Customize";
 import Info from "./views/Info";
@@ -7,14 +8,17 @@ import Thankyou from "./views/Thankyou";
 import Welcome from "./views/Welcome";
 // @ts-ignore
 export const MyContext = createContext({
-    selectedSize: "AS",
+    selectedSize: "",
     setSelectedSize: (design) => {},
     selectedGradient: 1,
     setSelectedGradient: (design) => {},
+    userName: "",
+    setUserName: (design) => {},
 });
 function App() {
     const [selectedSize, setSelectedSize] = React.useState("AS");
     const [selectedGradient, setSelectedGradient] = React.useState(3);
+    const [userName, setUserName] = React.useState("");
     return (
         <MyContext.Provider
             value={{
@@ -22,6 +26,8 @@ function App() {
                 setSelectedSize,
                 selectedGradient,
                 setSelectedGradient,
+                userName,
+                setUserName,
             }}
         >
             <BrowserRouter>
@@ -31,6 +37,7 @@ function App() {
                     <Route path="/choose" element={<Choose />} />
                     <Route path="/customize" element={<Customize />} />
                     <Route path="/thankyou" element={<Thankyou />} />
+                    <Route path="/admin" element={<Admin />} />
                 </Routes>
             </BrowserRouter>
         </MyContext.Provider>
