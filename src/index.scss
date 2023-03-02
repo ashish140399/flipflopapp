@@ -1,0 +1,68 @@
+@font-face {
+    font-family: neusaFont;
+    src: url("assets/fonts/neusa-next-std-regular.ttf");
+}
+@font-face {
+    font-family: neusaFontExtraBold;
+    src: url("assets/fonts/Neusa-ExtraBold.otf");
+}
+
+@font-face {
+    font-family: neusaFontBold;
+    src: url("assets/fonts/Neusa-Bold.otf");
+}
+
+@font-face {
+    font-family: rocgroteskBold;
+    src: url("assets/font/rocgrotesk-bold.otf");
+    font-weight: 100;
+}
+@font-face {
+    font-family: rocgroteskHeavy;
+    src: url("assets/font/rocgrotesk-heavy.otf");
+    font-weight: 100;
+}
+@font-face {
+    font-family: rocgroteskRegular;
+    src: url("assets/font/rocgrotesk-regular.otf");
+    font-weight: 100;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+* {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+body {
+    margin: 0;
+    font-family: rocgroteskHeavy;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #3e0093;
+    overflow: hidden;
+}
+
+code {
+    font-family: rocgroteskHeavy;
+}
+.MuiInputBase-formControl {
+    color: #000 !important;
+    background: #fff;
+    // .MuiInputBase-input {
+    //     padding: 8px !important;
+    // }
+    .MuiOutlinedInput-notchedOutline {
+        border: 1px solid #fff !important;
+
+        border-radius: 0 !important;
+    }
+}
+
+.MuiMenu-paper {
+    .MuiMenuItem-root {
+        font-size: 28px;
+    }
+}
