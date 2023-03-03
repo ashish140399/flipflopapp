@@ -70,7 +70,11 @@ const Customize: React.FC<Props> = () => {
             setShowloader(false);
             navigate("/thankyou");
         }
-
+        console.log({
+            name: userName,
+            size: selectedSize,
+            canvasuri: dataURL,
+        });
         axios
             .post(`${process.env.REACT_APP_API_URL}/api/save`, {
                 name: userName,
