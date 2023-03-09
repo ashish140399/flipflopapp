@@ -66,14 +66,14 @@ const Customize: React.FC<Props> = () => {
         //link.download = `canvas.png`;
         //link.href = dataURL;
         //link.click();
-        if (dataURL) {
-            navigate("/thankyou");
-        }
-        console.log({
-            name: userName,
-            size: selectedSize,
-            canvasuri: dataURL,
-        });
+//         if (dataURL) {
+//             navigate("/thankyou");
+//         }
+//         console.log({
+//             name: userName,
+//             size: selectedSize,
+//             canvasuri: dataURL,
+//         });
         axios
             .post(`${process.env.REACT_APP_API_URL}/api/save`, {
                 name: userName,
@@ -83,6 +83,7 @@ const Customize: React.FC<Props> = () => {
             .then((response) => {
                 console.log(response.data);
             setShowloader(false);
+             navigate("/thankyou");
             })
             .catch((error) => {
                 console.error(error);
