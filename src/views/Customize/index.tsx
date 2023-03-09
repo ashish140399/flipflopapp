@@ -62,10 +62,10 @@ const Customize: React.FC<Props> = () => {
             multiplier: 6,
         });
         // console.log(dataURL);
-        var link = document.createElement("a");
-        link.download = `canvas.png`;
-        link.href = dataURL;
-        link.click();
+        //var link = document.createElement("a");
+        //link.download = `canvas.png`;
+        //link.href = dataURL;
+        //link.click();
         if (dataURL) {
             setShowloader(false);
             navigate("/thankyou");
