@@ -67,7 +67,6 @@ const Customize: React.FC<Props> = () => {
         //link.href = dataURL;
         //link.click();
         if (dataURL) {
-            setShowloader(false);
             navigate("/thankyou");
         }
         console.log({
@@ -83,6 +82,7 @@ const Customize: React.FC<Props> = () => {
             })
             .then((response) => {
                 console.log(response.data);
+            setShowloader(false);
             })
             .catch((error) => {
                 console.error(error);
