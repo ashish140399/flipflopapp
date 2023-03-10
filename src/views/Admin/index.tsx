@@ -38,7 +38,7 @@ const downloadit = (url) => {
 
 const Admin: React.FC<Props> = () => {
     const [dbres, setDbres] = React.useState(null);
-    const [showadmin, setShowadmin] = React.useState(false);
+    const [showadmin, setShowadmin] = React.useState(true);
     React.useEffect(() => {
         axios
             .get(`${process.env.REACT_APP_API_URL}/api/fetchdb`)
@@ -51,10 +51,10 @@ const Admin: React.FC<Props> = () => {
             });
     }, []);
     React.useEffect(() => {
-        let foo = prompt("Enter code to login to admin :-)");
-        if (foo === "silverfox") {
-            setShowadmin(true);
-        }
+        //let foo = prompt("Enter code to login to admin :-)");
+       // if (foo === "silverfox") {
+        //    setShowadmin(true);
+      //  }
     }, []);
 
     return (
