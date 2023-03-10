@@ -37,7 +37,7 @@ function App() {
                     <Route path="/choose" element={<Choose />} />
                     <Route path="/customize" element={<Customize />} />
                     <Route path="/thankyou" element={<Thankyou />} />
-                    <Route path="/admin" element={<Admin />} />
+                    <Route path="/KCA2023" element={<Admin />} />
                 </Routes>
             </BrowserRouter>
         </MyContext.Provider>
